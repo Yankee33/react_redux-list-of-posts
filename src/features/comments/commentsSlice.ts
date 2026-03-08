@@ -70,7 +70,10 @@ const commentsSlice = createSlice({
         (state, action: PayloadAction<number>) => {
           state.items = state.items.filter(c => c.id !== action.payload);
         },
-      );
+      )
+      .addCase(removeComment.rejected, state => {
+        state.hasError = true;
+      });
   },
 });
 
